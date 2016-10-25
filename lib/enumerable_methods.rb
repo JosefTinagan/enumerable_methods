@@ -20,7 +20,17 @@ module Enumerable
 	end
 
 	def my_select
-		
+		x = 0
+		new_arr = []
+		while x < self.length
+				val = yield(self[x])
+				if val
+					new_arr.push(self[x])
+				end
+				
+		x+= 1
+		end
+		return new_arr
 	end
 end
 
