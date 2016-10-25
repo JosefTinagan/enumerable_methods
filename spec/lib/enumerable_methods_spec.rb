@@ -16,4 +16,11 @@ describe "EnumerableMethods" do
 			end	
 		expect(param).to eq [1,2,3]	
 	end
+
+	it "my_select enumerable method test" do
+		param = [1,2,3].my_select do |x|
+				x >= 2
+		end
+		expect(param).to eq [2,3]
+	end
 end
