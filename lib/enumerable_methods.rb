@@ -35,16 +35,40 @@ module Enumerable
 
 	def my_any?
 		x = 0
-		y = false
+		condition = false
 
 		while x < self.length
 			if yield(self[x])
-				y = true
+				condition = true
 			end
 		x += 1
 		end
 
-		return y
+		return condition
+	end
+
+	def my_all?
+		x = 0
+		while x < self.length
+			if yield(self[x])
+
+			else
+				return false
+			end
+			x += 1
+		end
+		return true
+	end
+
+	def my_none?
+		x = 0
+		while x < self.length
+			if yield(self[x])
+				return false
+			end
+		x += 1
+		end
+		return true
 	end
 end
 

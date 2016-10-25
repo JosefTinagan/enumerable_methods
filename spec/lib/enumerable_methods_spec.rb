@@ -69,27 +69,61 @@ describe "EnumerableMethods" do
 	end
 
 	context "my_all? method test" do
-		it "integer test" do 
+		it "integer test [true]" do 
 			param = [5,10,15].my_all? do |x|
 				x % 5 == 0
 			end
 			expect(param).to eq true
 		end
-		
-		it "string test" do
+
+		it "integer test [false]" do
+			param = [3,1,2].my_all? do |x|
+				x % 2 == 0
+			end
+			expect(param).to eq false
+		end		
+		it "string test [true]" do
 			param = ["ave","abe","arve"].my_all? do |x|
 				x =~ /a/
 			end
 			expect(param).to eq true
 		end
+
+		it "string test [false]" do
+			param = ["a","b","c"].my_all? do |x|
+				x =~ /a/
+			end
+			expect(param).to eq  false
+		end
 	end
 
 	context "my_none? method test" do
-		it "integer test" do
-
+		it "integer test [true]" do
+			param = [5,7,10].my_none? do |x|
+				x % 3 == 0
+			end
+			expect(param).to eq true
 		end
 
-		it "string test" 
+		it "integet test [false]" do
+			param = [5,7,10].my_none? do |x|
+				x % 5 == 0
+			end
+			expect(param).to eq false
+		end
+
+		it "string test [true]" do
+			param = ["ab","tr","cb"].my_none? do |x|
+				x =~ /v/
+			end
+			expect(param).to eq true
+		end 
+		it "string test [false]" do
+			param = ["cola","soda","pepsi"].my_none? do |x|
+				x =~ /soda/
+			end
+			expect(param).to eq false
+		end
 
 	end
 
