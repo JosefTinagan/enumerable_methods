@@ -128,9 +128,28 @@ describe "EnumerableMethods" do
 	end
 
 	context "my_count method test" do
-		it "integer test"
+		it "my_count testing without block" do
+			param = [1,2,3].my_count
+			expect(param).to eq 3
+		end
 
-		it "string test"
+		it "my_count testing without block and with parameter" do
+			param = [1,2,3].my_count(3)
+			expect(param).to eq 1
+		end
+		it "integer test" do
+			param = [1,1,1,2,1,3].my_count do |x|
+				x == 1
+			end
+			expect(param).to eq 4
+		end
+
+		it "string test" do 
+			param = ["ba","b","d","fuck"].my_count do |x|
+				x =~ /[bd]/
+			end
+			expect(param).to eq 3
+		end
 
 	end
 
