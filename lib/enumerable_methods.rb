@@ -28,9 +28,23 @@ module Enumerable
 					new_arr.push(self[x])
 				end
 				
-		x+= 1
+		x += 1
 		end
 		return new_arr
+	end
+
+	def my_any?
+		x = 0
+		y = false
+
+		while x < self.length
+			if yield(self[x])
+				y = true
+			end
+		x += 1
+		end
+
+		return y
 	end
 end
 

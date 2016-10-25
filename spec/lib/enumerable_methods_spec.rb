@@ -52,24 +52,35 @@ describe "EnumerableMethods" do
 		end
 	end
 
-	context "my_all? method test" do
-
+	context "my_any? method test" do
 		it "integer test" do
-
+			param = [1,5,100].my_any? do |x|
+				 x > 50
+			end
+			expect(param).to eq true
 		end
 
 		it "string test" do
-
+			param = ["a","beth","six"].my_any? do |x|
+				x =~ /sixe/
+			end
+			expect(param).to eq false
 		end
 	end
 
-	context "my_any? method test" do
-		it "integet test" do
-
+	context "my_all? method test" do
+		it "integer test" do 
+			param = [5,10,15].my_all? do |x|
+				x % 5 == 0
+			end
+			expect(param).to eq true
 		end
-
+		
 		it "string test" do
-
+			param = ["ave","abe","arve"].my_all? do |x|
+				x =~ /a/
+			end
+			expect(param).to eq true
 		end
 	end
 
