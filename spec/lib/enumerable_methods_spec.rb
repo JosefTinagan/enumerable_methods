@@ -175,20 +175,20 @@ describe "EnumerableMethods" do
 
 		end
 
-		#it "taking either a proc or block test" do
-		#	my_proc = Proc.new do |x| x * 2 end
-		#	param = [1,2,3].my_map(&my_proc) do |x|
-		#		puts x
-		#	end
-		#	expect(param).to eq "error"
-		#end
 	end
 
 	context "my_inject method test" do
-		it "integer test"
+		it "integer test product" do
+			param = multiply_els([2,4,5])
+			expect(param).to eq 40
+		end
 
-		it "string test"
+		it "integet test sum" do
+			param = [2,4,6,8,100].inject(0) do |running_total, item| 
+				running_total + item 
+			end
+			expect(param).to eq 120
+		end
 
-		it "with multiply_els method"
 	end
 end

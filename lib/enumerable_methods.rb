@@ -116,6 +116,20 @@ module Enumerable
 		end
 		return new_arr
 	end
+
+	def my_inject(initial_value=self[0])
+		return "no block given" unless block_given?
+		x = 0
+		while x < self.length - 1
+			initial_value = yield(initial_value,self[x+1])
+		x += 1
+		end
+		return initial_value
+	end
+end
+
+def multiply_els(arr)
+	return arr.my_inject do |total,x| total * x end
 end
 
 
