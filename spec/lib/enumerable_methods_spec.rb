@@ -154,13 +154,34 @@ describe "EnumerableMethods" do
 	end
 
 	context "my_map method test" do
-		it "integer test"
+		it "integer test" do 
+			param = [1,2,3].my_map do |x|
+				x * 2
+			end
+			expect(param).to eq [2,4,6]
+		end
 
-		it "string test"
+		it "string test" do
+			param = ["a","b","c"].my_map do |x|
+				x * 2
+			end
+			expect(param).to eq ["aa","bb","cc"]
+		end
 
-		it "taking a proc test"
+		it "taking a proc test" do
+			my_proc = Proc.new do |x| x * 2 end
+			param = [1,2,3].my_map(&my_proc)
+			expect(param).to eq [2,4,6]
 
-		it "taking either a proc or block test"
+		end
+
+		#it "taking either a proc or block test" do
+		#	my_proc = Proc.new do |x| x * 2 end
+		#	param = [1,2,3].my_map(&my_proc) do |x|
+		#		puts x
+		#	end
+		#	expect(param).to eq "error"
+		#end
 	end
 
 	context "my_inject method test" do

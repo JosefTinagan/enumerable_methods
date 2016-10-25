@@ -104,6 +104,18 @@ module Enumerable
 			return objects_found
 		end
 	end
+
+	def my_map(&a_proc)
+		return self unless block_given?
+		x = 0
+		new_arr = []
+		while x < self.length
+			val = yield(self[x])
+			new_arr.push(val)
+		x += 1
+		end
+		return new_arr
+	end
 end
 
 
